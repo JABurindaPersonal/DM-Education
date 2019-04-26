@@ -2,7 +2,14 @@ class HomeCtrl {
   constructor($scope) {
     'ngInject';
 
-var method = '4d6DropLow';
+    var method = '4d6DropLow';
+    function getVals(arrs) {
+      var total = 0;
+      arrs.forEach(function(e) {
+        total = total + pointbuyequivalent(e.val.value);
+      });
+      return total;
+    }
     function getSum(total, num) {
       return total + num;
     }
@@ -27,11 +34,20 @@ var method = '4d6DropLow';
 
     function rollstats() {
       switch (method) {
-        case '4d6DropLow':  return rolldice(4, 6, 1);
-        break;
-        default : return rolldice(3,6,0);
+        case '4d6DropLow': return rolldice(4, 6, 1);
+          break;
+        default: return rolldice(3, 6, 0);
       }
-    
+
+    }
+
+    function pointbuyequivalent(value) {
+      var addn = value-8;
+      if (value < 8) { addn = 0;}
+      if (value > 13) { addn = addn + (value - 13);}
+      if (value > 15) { addn = addn + (value - 15);}
+
+      return addn;
     }
 
     this.name = "Lotor McCleave";
@@ -44,6 +60,7 @@ var method = '4d6DropLow';
     ];
     this.prof = [{ type: "Langauge", name: "Common" }];
     this.race = race();
+    this.pbe = getVals(this.attrs);
   }
 
 }
