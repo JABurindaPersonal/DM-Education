@@ -2,6 +2,7 @@ class HomeCtrl {
   constructor($scope) {
     'ngInject';
 
+var method = '4d6DropLow';
     function getSum(total, num) {
       return total + num;
     }
@@ -20,21 +21,26 @@ class HomeCtrl {
       return { text: '(' + number + 'x d' + dice + ' drop ' + drop + ')', value: keep.reduce(getSum), rollhistory: pips.reduce(getList) };
     }
 
-function race() {
-  return {base:'Halfling', subrace:'Lightfoot'};
-}
+    function race() {
+      return { base: 'Halfling', subrace: 'Lightfoot' };
+    }
 
-    function rollfour() {
-      return rolldice(4, 6, 1);
+    function rollstats() {
+      switch (method) {
+        case '4d6DropLow':  return rolldice(4, 6, 1);
+        break;
+        default : return rolldice(3,6,0);
+      }
+    
     }
 
     this.name = "Lotor McCleave";
-    this.attrs = [{ name: 'Strength', abv: 'Str', val: rollfour() },
-    { name: 'Intelligence', abv: 'Int', val: rollfour() },
-    { name: 'Wisdom', abv: 'Wis', val: rollfour() },
-    { name: 'Dexterity', abv: 'Dex', val: rollfour() },
-    { name: 'Constitution', abv: 'Con', val: rollfour() },
-    { name: 'Charisma', abv: 'Chr', val: rollfour() }
+    this.attrs = [{ name: 'Strength', abv: 'Str', val: rollstats() },
+    { name: 'Intelligence', abv: 'Int', val: rollstats() },
+    { name: 'Wisdom', abv: 'Wis', val: rollstats() },
+    { name: 'Dexterity', abv: 'Dex', val: rollstats() },
+    { name: 'Constitution', abv: 'Con', val: rollstats() },
+    { name: 'Charisma', abv: 'Chr', val: rollstats() }
     ];
     this.prof = [{ type: "Langauge", name: "Common" }];
     this.race = race();
