@@ -58,7 +58,7 @@ class HomeCtrl {
     { name: 'Constitution', abv: 'Con', val: rollstats() },
     { name: 'Charisma', abv: 'Chr', val: rollstats() }
     ];
-    this.prof = [{ type: "Langauge", name: "Common" }];
+    this.prof = [{ type: "Language", name: "Common" }];
     this.race = race();
     this.pbe = getVals(this.attrs);
   }
