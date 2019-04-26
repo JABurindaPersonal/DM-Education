@@ -25,7 +25,7 @@ class HomeCtrl {
       }
       pips.sort();
       var keep = pips.slice(drop, number);
-      return { text: '(' + number + 'x d' + dice + ' drop ' + drop + ')', value: keep.reduce(getSum), rollhistory: pips.reduce(getList) };
+      return { text: '(' + number + 'x d' + dice + ' drop ' + drop + ')', value: keep.reduce(getSum), rollhistory: pips.reduce(getList), modifier:calcmod(keep.reduce(getSum)) };
     }
 
     function race() {
@@ -48,6 +48,11 @@ class HomeCtrl {
       if (value > 15) { addn = addn + (value - 15);}
 
       return addn;
+    }
+
+    function calcmod(val) {
+      debugger;
+      return Math.floor((val-10)/2);
     }
 
     this.name = "Lotor McCleave";

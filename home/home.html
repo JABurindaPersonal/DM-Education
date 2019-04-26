@@ -7,7 +7,9 @@
 <h2>Stats</h2>
   <div class="row" ng-repeat="x in $ctrl.attrs">
     <div class="col-lg-2 panel panel-default">
-      <div class="panel panel-heading" tooltip="{{x.name}}">{{ x.abv | uppercase }}</div><div class="panel panel-body"> {{x.val.value}}</div> <i>Sorted Rolls: {{x.val.rollhistory}}</i></div>
+      <div class="panel panel-heading" tooltip="{{x.name}}">{{ x.abv | uppercase }}</div>
+      <div class="panel panel-body"> {{x.val.value}}</div> <i>Sorted Rolls: {{x.val.rollhistory}}</i></div>
+      <div>MOD: {{x.val.modifier}}</div>
   </div>
   <div class="panel panel-default">
 <div class="panel-heading">Proficiencies</div>
