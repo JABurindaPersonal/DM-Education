@@ -1,8 +1,9 @@
 class HomeCtrl {
-  constructor($scope) {
+  constructor($scope, $http) {
     'ngInject';
 
     var method = '4d6DropLow';
+
     function getVals(arrs) {
       var total = 0;
       arrs.forEach(function(e) {
@@ -51,9 +52,13 @@ class HomeCtrl {
     }
 
     function calcmod(val) {
-      debugger;
       return Math.floor((val-10)/2);
     }
+console.log("here");
+$http.get("character.txt")
+.then(function (response) { console.log("more"); console.log(response.data); $scope.character = response.data.contentItem;
+$scope.feedback = "got";}, 
+function(response) {$scope.feedback = "broke";});
 
     this.name = "Lotor McCleave";
     this.attrs = [{ name: 'Strength', abv: 'Str', val: rollstats() },
@@ -66,6 +71,7 @@ class HomeCtrl {
     this.prof = [{ type: "Language", name: "Common" }];
     this.race = race();
     this.pbe = getVals(this.attrs);
+    this.feedback = 'loading';
   }
 
 }

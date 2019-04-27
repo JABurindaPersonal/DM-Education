@@ -1,7 +1,10 @@
-<span>Name:</span><strong>{{$ctrl.name}}</strong>
-{{$ctrl.race.subrace}} {{$ctrl.race.base}}<button class="btn btn-secondary" value="Refresh Page" onClick="window.location.reload()">
-  <span class="glyphicon glyphicon-refresh"></span></button> 
+<span>Name:</span><strong>{{$ctrl.character.name}}</strong>
+{{$ctrl.race.subrace}} {{$ctrl.race.base}}
+<button class="btn btn-secondary" value="Refresh Page" onClick="window.location.reload()">
+  <span class="glyphicon glyphicon-refresh"></span>
+  </button> 
   <br/>
+  <span>feedback: {{$ctrl.feedback}}</span>
 <strong>PBE Value: {{$ctrl.pbe}} (assume 3pts per over 15)</strong>
 <p>
 <h2>Stats</h2>
